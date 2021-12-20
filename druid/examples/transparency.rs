@@ -21,7 +21,7 @@
 use druid::kurbo::Circle;
 use druid::widget::prelude::*;
 use druid::widget::{Flex, Label, Painter, TextBox, WidgetExt};
-use druid::{AppLauncher, Color, Lens, Rect, WindowDesc};
+use druid::{AppLauncher, Color, Lens, Point, Rect, Screen, WindowDesc, WindowLevel};
 
 #[derive(Clone, Data, Lens)]
 struct HelloState {
@@ -29,9 +29,14 @@ struct HelloState {
 }
 
 pub fn main() {
+    let monitors = Screen::get_display_rect();
+    let top_left = Point::new(0 as f64, 0 as f64);
+
     let window = WindowDesc::new(build_root_widget())
+        .set_level(WindowLevel::TopLevelAppWindow)
         .show_titlebar(false)
-        .window_size((512., 512.))
+        .set_position(top_left)
+        .window_size((monitors.width(), monitors.height()))
         .transparent(true)
         .resizable(true)
         .title("Transparent background");

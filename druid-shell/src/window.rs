@@ -150,6 +150,8 @@ impl FileDialogToken {
 /// conventions.
 #[derive(Clone, PartialEq)]
 pub enum WindowLevel {
+    /// A top level app window, sitting above all system UI elements
+    TopLevelAppWindow,
     /// A top level app window.
     AppWindow,
     /// A window that should stay above app windows - like a tooltip

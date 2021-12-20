@@ -88,6 +88,7 @@ mod levels {
     pub fn as_raw_window_level(window_level: WindowLevel) -> i32 {
         use WindowLevel::*;
         match window_level {
+            TopLevelAppWindow => NSScreenSaverWindowLevel,
             AppWindow => NSNormalWindowLevel,
             Tooltip(_) => NSFloatingWindowLevel,
             DropDown(_) => NSFloatingWindowLevel,
